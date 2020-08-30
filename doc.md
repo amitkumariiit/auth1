@@ -11,7 +11,7 @@ For the slack-github integration, the slack app is currently on legacy app. Slac
 ChatOps encompasses two applications one on Slack end and the other on GitHub side. As part of this document, app available in the Slack marketplace will be called Slack app whereas app available in the GitHub marketplace will be referred to as GitHub app.
 
 ## GitHub App
-### Option - 1 Use existing github app
+### Option - 1: Use existing github app
 #### Pros
 1. No need to auther and maintain two apps
 #### Cons
@@ -20,7 +20,7 @@ ChatOps encompasses two applications one on Slack end and the other on GitHub si
 3. Common endpoints for signIn and installations callback need to be modified to handle both the legacy and new app.
 4. Risk of regression in legacy support.
 
-### Option - 2 Build new github app for new slack app
+### Option - 2: Build new github app for new slack app
 #### Pros
 1. Better segregation of APIs.
 2. Elimination of regression risk as old APIs will not to be changed.
@@ -80,12 +80,14 @@ Authoring a new GitHub app is a trivial work and considering the benefits of Opt
 
 
 ### Following are the actions that we would like to do as part of the activity either on short or long term
-1. Registering the new slack app with current name only
-2. Exploring what changed in new slack app and what changes are need in code to supprt that
-6. Renaming the old slack app (before releasing the new slack app)
-7. Renaming the old github app (before releasing the new slack app)
-8. Registering new github app with current name only
-9. Hosting new slack app on slack.github.com and opening a hidden url for legacy slack.github.com for debugging
-3. Move the slack features to the new chatops code base
-4. Deprecating the old slack app
-
+1. Register the new slack app
+2. Explore what changed in new slack app and what changes are needed in code to supprt that
+3. Prototype auth flow for slack and github with new slack app
+4. Rename the old slack app (before releasing the new slack app)
+5. Rename the old github app (before releasing the new slack app)
+6. Register new github app with current name only
+7. Host new slack app on slack.github.com and open a hidden url for legacy slack.github.com for debugging
+8. Move the slack features to the new chatops code base
+9. Deprecate the legacy slack app
+10. Remove legacy slack app from market place
+11. Stop supporting the legacy app (long term)
