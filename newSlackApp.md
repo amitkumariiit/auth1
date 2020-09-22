@@ -23,7 +23,7 @@ We need to communicate the following information to the users once they installe
 
 We can post the list of messages as a direct message to the installing user about the exhaustive list of channels along with the invite command like below that user can run to invite the new app. Invite command on a channel look like ```/invite @github channelName1```
 
-We can also post this message (/invite @github) to invite new apps to each channel from the legacy app. Need to post from legacy app because new app can post to the private channels.
+We can also post this message `/invite @github` to invite new apps to each channel from the legacy app. Need to post from legacy app because new app can post to the private channels.
 
 [Note] We can also automatically [invite](https://api.slack.com/methods/admin.users.invite) bot to channels from code, but this would need the user level token with [admin:users:write](https://api.slack.com/scopes/admin.users:write) scope and this scope opens up other privileges also. For this only use-case, taking depending on user token with admin scope doesn’t seem promising. 
 
@@ -43,11 +43,11 @@ To enable seamless migration for users so that notifications keep working as bef
      3. App installation setup callback url
   2. So we need to mess up with the legacy endpoints and risk of regression will be there, especially for supporting webhooks.
   3. To support webhooks for both apps
-     1. We always need to fetch subscriptions from both old and legacy tables to know from which app notifications need to be posted. So making extra calls. So when the new app is installed, always making extra redundant calls considering we cleanup legacy tables on update.
-     2. GitHub event listeners with the octokit library can only be registered in the legacy code and to use the new chatops codebase for event handlers, significant amount of changes needed in both legacy and chatops code base.
-     3. So both sides of the feature **need to be tested**.
+     1. We always need to fetch subscriptions from both old and legacy tables to know from which app notifications need to be posted. So making extra calls. So when the new app is installed, always making extra redundant DB calls considering we cleanup legacy tables on update.
+     2. GitHub event listeners with the octokit library can only be registered in the legacy code and to use the new chatops codebase for event handlers, significant amount of changes needed in both legacy and chatops code base. To route the new app notification events to the chatops codebase.
+     3. So both features from both apps **need to be tested**.
      4. Also, after retiring the legacy app, when we will delete the legacy javascript codebase, we need to redo to register github event listeners with octokit library with the chatops code base, so again will **need the testing effort**.
-  4. We can’t have separate deployment (instances) supporting the new app because endpoints have to be the same, hence can’t have the benefit of abstracting new app with the legacy.
+ 
 
 # Options for migration
 ## Options-1 Migrate without user data
@@ -55,7 +55,7 @@ This is how flow look like
 1. User installs new app
 2. Post list of subscriptions to the channels from legacy app on each channel.
 3. DM the list of invite commands to the installing user.
-4. Uninstall legacy app (automatically)
+4. Uninstall legacy app (automatically using [api](https://api.slack.com/methods/apps.uninstall))
 ### Pros
 1. No extra burden of data migration.
 2. We can go with a different github app. Users would need to install this in the repo on running subscribe command for the first time.
