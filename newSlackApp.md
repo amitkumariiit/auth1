@@ -1,4 +1,3 @@
-
 # Context
 As we are migrating from the legacy workspace model built github slack app to the new granular bot permission model app, we need to close on the migration options we have.
 This doc talks about the available options.
@@ -22,13 +21,7 @@ We need to communicate the following information to the users once they installe
 
 1. Channels on which legacy app was installed.
 
-We can send the list of messages as a direct message to the installing user about the exhaustive list of channels along with the invite command like below that user can run to invite the new app.
-
-/invite @github channelName1
-
-/invite @github channelName2
-
-/invite @github channelName3
+We can post the list of messages as a direct message to the installing user about the exhaustive list of channels along with the invite command like below that user can run to invite the new app. Invite command on a channel look like ```/invite @github channelName1```
 
 We can also post this message (/invite @github) to invite new apps to each channel from the legacy app. Need to post from legacy app because new app can post to the private channels.
 
