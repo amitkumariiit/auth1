@@ -4,5 +4,4 @@ aa
 s
 a
 s
-ss
 s
