@@ -32,15 +32,11 @@
 		</g>
 		<marker id="mrkr4-15" class="st5" refX="-8.72" orient="auto"
 				markerUnits="strokeWidth" overflow="visible">
-		<g id="lend4">
-			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
-		</g>
+			<use xlink:href="#lend4" transform="scale(-4.36,-4.36) "/>
 		</marker>
 		<marker id="mrkr4-49" class="st5" v:arrowType="4" v:arrowSize="2" v:setback="8.24" refX="8.24" orient="auto"
 				markerUnits="strokeWidth" overflow="visible">
-		<g id="lend4">
-			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
-		</g>
+			<use xlink:href="#lend4" transform="scale(4.36) "/>
 		</marker>
 	</defs>
 	<g v:mID="5" v:index="1" v:groupContext="foregroundPage">
